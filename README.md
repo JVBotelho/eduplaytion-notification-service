@@ -1,3 +1,3 @@
 # eduplaytion-notification-service
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/eduplaytion-notification-service-vj4rzz)
+Code to showcase my experience with ExpressJS, NodeJS, TypeORM and PostgreSQL. 
