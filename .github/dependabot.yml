@@ -1,0 +1,70 @@
+version: 2
+updates:
+  # Update dependencies for Node.js
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    ignore:
+      # Ignore updates to package `nodemon`
+      - dependency-name: "nodemon"
+    # Update all dependencies, including transitive ones
+    # Allow major version updates, but not breaking changes
+    # Only update to versions that have been out for at least 1 day
+    # Keep a maximum of 20 PRs open at any given time
+    # Open PRs as "dependabot/npm-and-yarn" instead of "dependabot"
+    # Include any "greenkeeper" or "renovate" PRs
+    # Automatically merge version updates that don't require changes to the lockfile
+    version: "3.0.0"
+    update-type: "all"
+    # Allow major version updates, but not breaking changes
+    # Only update to versions that have been out for at least 1 day
+    # Keep a maximum of 20 PRs open at any given time
+    # Open PRs as "dependabot/npm-and-yarn" instead of "dependabot"
+    # Include any "greenkeeper" or "renovate" PRs
+    # Automatically merge version updates that don't require changes to the lockfile
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependencies"
+  # Update dependencies for TypeORM
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    ignore:
+      # Ignore updates to package `typeorm`
+      - dependency-name: "typeorm"
+    # Update all dependencies, including transitive ones
+    # Allow major version updates, but not breaking changes
+    # Only update to versions that have been out for at least 1 day
+    # Keep a maximum of 20 PRs open at any given time
+    # Open PRs as "dependabot/npm-and-yarn" instead of "dependabot"
+    # Include any "greenkeeper" or "renovate" PRs
+    # Automatically merge version updates that don't require changes to the lockfile
+    version: "3.0.0"
+    update-type: "all"
+    # Allow major version updates, but not breaking changes
+    # Only update to versions that have been out for at least 1 day
+    # Keep a maximum of 20 PRs open at any given time
+    # Open PRs as "dependabot/npm-and-yarn" instead of "dependabot"
+    # Include any "greenkeeper" or "renovate" PRs
+    # Automatically merge version updates that don't require changes to the lockfile
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependencies"
+  # Update dependencies for PostgreSQL
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    ignore:
+      # Ignore updates to package `pg`
+      - dependency-name: "pg"
+    # Update all dependencies, including transitive ones
+    # Allow major version updates, but not breaking changes
+    # Only update to versions that have been out for at least 1 day
+    # Keep a maximum of 20 PRs open at any given time
+    # Open PRs as "dependabot/npm-and-yarn" instead of "dependabot"
+    # Include any
