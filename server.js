@@ -40,6 +40,63 @@ app.get('/api/notifications/read/count', (req, res, next) => {
 	});
 });
 
+app.put('/api/notifications/:id/read', async (req, res, next) => {
+	try {
+		const notificationId = req.params.id;
+		const notificationRepo = typeorm.getRepository('notifications');
+		const notification = await notificationRepo.findOne({id: notificationId});
+		if (!notification) {
+			return res.status(404).send('NotificationEntity not found');
+		}
+		notification.read = true;
+		await notificationRepo.save(notification);
+		return res.status(200).send('NotificationEntity marked as read');
+	} catch (err) {
+		return next(err);
+	}
+});
+
+app.put('/api/notifications/:id/unread', async (req, res, next) => {
+	try {
+		const notificationId = req.params.id;
+		const notificationRepo = typeorm.getRepository('notifications');
+		const notification = await notificationRepo.findOne({id: notificationId});
+		if (!notification) {
+			return res.status(404).send('NotificationEntity not found');
+		}
+		notification.read = false;
+		await notificationRepo.save(notification);
+		return res.status(200).send('NotificationEntity marked as unread');
+	} catch (err) {
+		return next(err);
+	}
+});
+
+app.get('/api/notifications/:id', async (req, res, next) => {
+	try {
+		const notificationId = req.params.id;
+		const notificationRepo = typeorm.getRepository('notifications');
+		const notification = await notificationRepo.findOne({id: notificationId}, {relations: ['user']});
+		if (!notification) {
+			return res.status(404).send('NotificationEntity not found');
+		}
+		return res.json(notification);
+	} catch (err) {
+		return next(err);
+	}
+});
+
+app.get('/api/notifications/user/:userId', async (req, res, next) => {
+	try {
+		const userId = req.params.userId;
+		const notificationRepo = typeorm.getRepository('notifications');
+		const notifications = await notificationRepo.find({where: {user: userId}});
+		return res.json(notifications);
+	} catch (err) {
+		return next(err);
+	}
+});
+
 app.use('/', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.listen(3000, async () => {
